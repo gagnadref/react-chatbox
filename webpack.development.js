@@ -19,7 +19,7 @@ const statOptions = {
   cachedAssets: false,
   reasons: false,
   source: false,
-  errorDetails: false
+  errorDetails: false,
 };
 
 const devConfig = Object.assign({}, config.client, {
@@ -27,10 +27,10 @@ const devConfig = Object.assign({}, config.client, {
   entry: [
     'webpack/hot/only-dev-server',
     `webpack-dev-server/client?${HOST_URI}`,
-    config.client.entry
+    config.client.entry,
   ],
   output: Object.assign({}, config.client.output, {
-    publicPath: `${HOST_URI}/`
+    publicPath: `${HOST_URI}/`,
   }),
   module: {
     loaders: [
@@ -41,21 +41,21 @@ const devConfig = Object.assign({}, config.client, {
       },
       {
         test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
-      }
-    ]
+        loader: 'style-loader!css-loader!less-loader',
+      },
+    ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 });
 
 const devServer = new WebpackDevServer(webpack(devConfig), {
   hot: true,
-  stats: statOptions
+  stats: statOptions,
 });
 
-devServer.listen(PORT, HOST, function (err) {
+devServer.listen(PORT, HOST, (err) => {
   if (err) throw err;
   console.log(`Webpack dev server listening at ${HOST_URI}`);
 });

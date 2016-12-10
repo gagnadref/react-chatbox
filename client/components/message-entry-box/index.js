@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {} from './style.less';
 
 class MessageEntryBox extends Component {
   render() {
     return (
-      <div className='message-entry-box'>
+      <div className="message-entry-box">
         <textarea
-          name='message'
-          placeholder='Enter a message'
+          name="message"
+          placeholder="Enter a message"
           value={this.props.value}
           onChange={this.handleChange.bind(this)}
-          onKeyPress={this.handleKeyPress.bind(this)}/>
+          onKeyPress={this.handleKeyPress.bind(this)}
+        />
       </div>
     );
   }
@@ -26,7 +27,7 @@ class MessageEntryBox extends Component {
       if (trimmedMessage) {
         this.props.onSubmit({
           text: trimmedMessage,
-          userId: this.props.userId
+          userId: this.props.userId,
         });
       }
 

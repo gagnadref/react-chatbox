@@ -1,12 +1,12 @@
-import {combineReducers} from 'redux';
-import {UPDATE_MESSAGE, ADD_MESSAGE, ADD_RESPONSE, SET_USER_ID} from 'actions/message-actions';
+import { combineReducers } from 'redux';
+import { UPDATE_MESSAGE, ADD_MESSAGE, ADD_RESPONSE, SET_USER_ID } from 'actions/message-actions';
 
 export default function (initialState) {
-  function messages(currentMessages=initialState.messages, action) {
+  function messages(currentMessages = initialState.messages, action) {
     switch (action.type) {
       case ADD_MESSAGE:
       case ADD_RESPONSE:
-        let messages = currentMessages.map(message => Object.assign({}, message));
+        const messages = currentMessages.map(message => Object.assign({}, message));
         messages.push(Object.assign({}, action.message));
         return messages;
       default:
@@ -14,8 +14,8 @@ export default function (initialState) {
     }
   }
 
-  function currentMessage(currentMessage=initialState.currentMessage, action) {
-    switch(action.type) {
+  function currentMessage(currentMessage = initialState.currentMessage, action) {
+    switch (action.type) {
       case UPDATE_MESSAGE:
         return action.message;
       case ADD_MESSAGE:
@@ -25,7 +25,7 @@ export default function (initialState) {
     }
   }
 
-  function userId(currentUserId=initialState.userId, action) {
+  function userId(currentUserId = initialState.userId, action) {
     if (action.type === SET_USER_ID) {
       return action.userId;
     }
@@ -33,5 +33,5 @@ export default function (initialState) {
     return currentUserId;
   }
 
-  return combineReducers({userId, currentMessage, messages});
+  return combineReducers({ userId, currentMessage, messages });
 }

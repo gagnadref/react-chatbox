@@ -13,13 +13,13 @@ export const babelLoader = {
 
 export const cssLoader = {
   test: /\.less$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader'),
 };
 
 export const aliases = {
   components: path.resolve(CLIENT_DIR, 'components'),
   reducers: path.resolve(CLIENT_DIR, 'reducers'),
-  actions: path.resolve(CLIENT_DIR, 'actions')
+  actions: path.resolve(CLIENT_DIR, 'actions'),
 };
 
 export const client = {
@@ -29,17 +29,17 @@ export const client = {
   entry: './index.js',
   output: {
     path: DIST_DIR,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
-    loaders: [babelLoader, cssLoader]
+    loaders: [babelLoader, cssLoader],
   },
   resolve: {
-    alias: aliases
+    alias: aliases,
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css', {allChunks: true})
-  ]
+    new ExtractTextPlugin('bundle.css', { allChunks: true }),
+  ],
 };
 
 export const server = {
@@ -47,23 +47,23 @@ export const server = {
   target: 'node',
   context: CLIENT_DIR,
   entry: {
-    app: 'components/app/index.js'
+    app: 'components/app/index.js',
   },
   output: {
     path: SERVER_DIR,
     filename: '[name].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
   externals: /^[a-z\-0-9]+$/,
   module: {
-    loaders: [babelLoader, cssLoader]
+    loaders: [babelLoader, cssLoader],
   },
   resolve: {
-    alias: aliases
+    alias: aliases,
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
-  ]
+    new ExtractTextPlugin('[name].css'),
+  ],
 };
 
 export default [client, server];
