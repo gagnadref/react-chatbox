@@ -26,4 +26,4 @@ rethinkdb --http-port 9000
 npm run webpack-dev
 npm run start-dev
 ```
-You can now access the chatbox on `http://localhost:3000/`.
+You can now access the chatbox on [http://localhost:3000/](http://localhost:3000/).
