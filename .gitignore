@@ -3,3 +3,4 @@ dist
 bundle.js
 server/generated
 .DS_Store
+rethinkdb_data
