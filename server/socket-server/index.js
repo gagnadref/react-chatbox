@@ -1,11 +1,11 @@
 import io from 'socket.io';
 import r from 'rethinkdb';
+import guid from './services/guid';
 
 export default function (server) {
   r.connect({}).then((dbConnection) => {
     const socketServer = io(server);
     const connections = {};
-    let userIdCount = 0;
 
     r.table('chat_messages')
       .changes()
@@ -16,7 +16,7 @@ export default function (server) {
             Object.keys(connections).forEach((userId) => {
               const message = row.new_val;
 
-              if (+userId !== message.userId) {
+              if (userId !== message.userId) {
                 connections[userId].emit('message', message);
               }
             });
@@ -25,7 +25,7 @@ export default function (server) {
       });
 
     socketServer.on('connection', (socket) => {
-      const userId = (userIdCount += 1);
+      const userId = guid();
       connections[userId] = socket;
 
       socket.emit('start', { userId });
