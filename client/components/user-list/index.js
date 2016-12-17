@@ -1,25 +1,29 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {} from './style.less';
 
-const UserList = (props) => (
-  <ul className="user-list">
-    {props.users.map((user, index) => {
-      if (user.userId !== props.userId) {
-        return (
-          <li key={`user-${index}`} className="user-item">
-            <p>
-              {user.userId}
-            </p>
-          </li>
-        );
-      }
+class UserList extends Component {
+  render() {
+    return (
+      <ul className="user-list">
+        {this.props.users.map((user, index) => {
+          if (user.userId !== this.props.userId) {
+            return (
+              <li key={`user-${index}`} className="user-item">
+                <p>
+                  {user.userId}
+                </p>
+              </li>
+            );
+          }
 
-      return (
-        <li />
-      );
-    })}
-  </ul>
-);
+          return (
+            <span />
+          );
+        })}
+      </ul>
+    );
+  }
+}
 
 UserList.propTypes = {
   users: PropTypes.array,

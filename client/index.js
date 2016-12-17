@@ -2,12 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import createLogger from 'redux-logger';
+
 import App from './components/app';
 import reducers from './reducers';
 import startChat, { chatMiddleware } from './chat';
 
 const initialState = window.INITIAL_STATE;
-const createStoreWithMiddleware = applyMiddleware(chatMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(
+  chatMiddleware,
+  createLogger()
+)(createStore);
 const store = createStoreWithMiddleware(reducers(initialState));
 
 startChat(store);

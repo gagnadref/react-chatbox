@@ -28,10 +28,11 @@ export default function (server) {
     socketServer.on('connection', (socket) => {
       const userId = guid();
       connections[userId] = socket;
-      users.push(userId);
+      users.push({ userId });
 
       socket.emit('start', { userId });
-      socket.emit('user_list', { users });
+      socket.emit('update-user-list', { users });
+      socket.broadcast.emit('update-user-list', { users });
 
       socket.on('message', (data) => {
         r.table('chat_messages')
@@ -41,7 +42,8 @@ export default function (server) {
 
       socket.on('disconnect', () => {
         delete connections[userId];
-        users.slice(userId, 1);
+        users.splice(users.indexOf(userId), 1);
+        socket.broadcast.emit('update-user-list', { users });
       });
     });
   });

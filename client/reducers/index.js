@@ -49,9 +49,9 @@ export default function (initialState) {
   }
 
   return combineReducers({
-    userIdReducer,
-    usersReducer,
-    currentMessageReducer,
-    messagesReducer,
+    userId: userIdReducer,
+    users: usersReducer,
+    currentMessage: currentMessageReducer,
+    messages: messagesReducer,
   });
 }
