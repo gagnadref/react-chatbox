@@ -1,5 +1,10 @@
 import { combineReducers } from 'redux';
-import { UPDATE_MESSAGE, ADD_MESSAGE, ADD_RESPONSE, SET_USER_ID } from 'actions/message-actions';
+import {
+  UPDATE_MESSAGE,
+  ADD_MESSAGE,
+  ADD_RESPONSE,
+  SET_USER_ID,
+} from '../actions/message-actions';
 
 export default function (initialState) {
   function messages(currentMessages = initialState.messages, action) {
@@ -7,6 +12,7 @@ export default function (initialState) {
       case ADD_MESSAGE:
       case ADD_RESPONSE:
         const messages = currentMessages.map(message => Object.assign({}, message));
+
         messages.push(Object.assign({}, action.message));
         return messages;
       default:
@@ -33,5 +39,14 @@ export default function (initialState) {
     return currentUserId;
   }
 
-  return combineReducers({ userId, currentMessage, messages });
+  function users(currentUsers = initialState.users) {
+    return currentUsers;
+  }
+
+  return combineReducers({
+    userId,
+    users,
+    currentMessage,
+    messages,
+  });
 }
