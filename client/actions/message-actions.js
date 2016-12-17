@@ -8,8 +8,8 @@ export const SUBMIT_NAME = 'submitName';
 export const SEND_CHAT_REQUEST = 'sendChatRequest';
 export const CREATE_NEW_CHAT = 'createNewChat';
 
-export function updateMessage(message) {
-  return { type: UPDATE_MESSAGE, message };
+export function updateMessage(chatId, message) {
+  return { type: UPDATE_MESSAGE, chatId, message };
 }
 
 export function addMessage(message) {

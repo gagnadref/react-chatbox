@@ -4,30 +4,6 @@ import * as actions from '../actions/message-actions';
 
 
 export default function (initialState) {
-  function messagesReducer(currentMessages = initialState.messages, action) {
-    const messages = currentMessages.map(message => Object.assign({}, message));
-
-    switch (action.type) {
-      case actions.ADD_MESSAGE:
-      case actions.ADD_RESPONSE:
-        messages.push(Object.assign({}, action.message));
-        return messages;
-      default:
-        return currentMessages;
-    }
-  }
-
-  function currentMessageReducer(currentMessage = initialState.currentMessage, action) {
-    switch (action.type) {
-      case actions.UPDATE_MESSAGE:
-        return action.message;
-      case actions.ADD_MESSAGE:
-        return '';
-      default:
-        return currentMessage;
-    }
-  }
-
   function userReducer(currentUser = initialState.user, action) {
     switch (action.type) {
       case actions.SET_USER_ID:
@@ -56,12 +32,42 @@ export default function (initialState) {
   }
 
   function chatListReducer(currentChatList = initialState.chats, action) {
-    const chats = currentChatList.map(chat => Object.assign({}, chat));
+    let messages;
 
     switch (action.type) {
       case actions.CREATE_NEW_CHAT:
-        chats.push(Object.assign({}, action.chat));
-        return chats;
+        return Object.assign({}, currentChatList, {
+          [action.chat.chatId]: action.chat,
+        });
+      case actions.UPDATE_MESSAGE:
+        return Object.assign({}, currentChatList, {
+          [action.chatId]: Object.assign({}, currentChatList[action.chatId], {
+            currentMessage: action.message,
+          }),
+        });
+      case actions.ADD_MESSAGE:
+        messages = currentChatList[action.message.chatId].messages.map(
+          message => Object.assign({}, message)
+        );
+        messages.push(Object.assign({}, action.message));
+
+        return Object.assign({}, currentChatList, {
+          [action.message.chatId]: Object.assign({}, currentChatList[action.message.chatId], {
+            currentMessage: '',
+            messages,
+          }),
+        });
+      case actions.ADD_RESPONSE:
+        messages = currentChatList[action.message.chatId].messages.map(
+          message => Object.assign({}, message)
+        );
+        messages.push(Object.assign({}, action.message));
+
+        return Object.assign({}, currentChatList, {
+          [action.message.chatId]: Object.assign({}, currentChatList[action.message.chatId], {
+            messages,
+          }),
+        });
       default:
         return currentChatList;
     }
@@ -70,8 +76,6 @@ export default function (initialState) {
   return combineReducers({
     user: userReducer,
     users: userListReducer,
-    currentMessage: currentMessageReducer,
-    messages: messagesReducer,
     chats: chatListReducer,
   });
 }

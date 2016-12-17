@@ -3,7 +3,7 @@ import {} from './style.less';
 
 class MessageEntryBox extends Component {
   handleChange(ev) {
-    this.props.onChange(ev.target.value);
+    this.props.onChange(this.props.chatId, ev.target.value);
   }
 
   handleKeyPress(ev) {

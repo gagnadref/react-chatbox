@@ -19,18 +19,22 @@ class App extends Component {
             sendChatRequest={this.props.sendChatRequest}
           />
           <ol className="chat-list">
-            {this.props.chats.map((chat, index) => (
-              <li key={`chat-${index}`} className="chat-item">
-                <Chat
-                  chatId={chat.chatId}
-                  userId={this.props.user.userId}
-                  messages={chat.messages}
-                  currentMessage={chat.currentMessage}
-                  updateMessage={this.props.updateMessage}
-                  addMessage={this.props.addMessage}
-                />
-              </li>
-            ))}
+            {Object.keys(this.props.chats).map((chatId, index) => {
+              const chat = this.props.chats[chatId];
+
+              return (
+                <li key={`chat-${index}`} className="chat-item">
+                  <Chat
+                    chatId={chatId}
+                    userId={this.props.user.userId}
+                    messages={chat.messages}
+                    currentMessage={chat.currentMessage}
+                    updateMessage={this.props.updateMessage}
+                    addMessage={this.props.addMessage}
+                  />
+                </li>
+              );
+            })}
           </ol>
         </div>
       );
@@ -49,7 +53,7 @@ class App extends Component {
 App.propTypes = {
   users: PropTypes.object,
   user: PropTypes.object,
-  chats: PropTypes.array,
+  chats: PropTypes.object,
   sendChatRequest: PropTypes.func,
   updateName: PropTypes.func,
   submitName: PropTypes.func,
