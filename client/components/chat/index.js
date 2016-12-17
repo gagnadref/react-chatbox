@@ -7,6 +7,7 @@ const Chat = (props) => (
   <div>
     <MessageList userId={props.userId} messages={props.messages} />
     <MessageEntryBox
+      chatId={props.chatId}
       value={props.currentMessage}
       userId={props.userId}
       onChange={props.updateMessage}
@@ -16,6 +17,7 @@ const Chat = (props) => (
 );
 
 Chat.propTypes = {
+  chatId: PropTypes.string,
   userId: PropTypes.string,
   messages: PropTypes.array,
   currentMessage: PropTypes.string,

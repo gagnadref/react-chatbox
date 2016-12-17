@@ -5,6 +5,8 @@ export const SET_USER_ID = 'setUserId';
 export const UPDATE_USER_LIST = 'updateUserList';
 export const UPDATE_NAME = 'updateName';
 export const SUBMIT_NAME = 'submitName';
+export const SEND_CHAT_REQUEST = 'sendChatRequest';
+export const CREATE_NEW_CHAT = 'createNewChat';
 
 export function updateMessage(message) {
   return { type: UPDATE_MESSAGE, message };
@@ -32,4 +34,12 @@ export function updateName(name) {
 
 export function submitName(name) {
   return { type: SUBMIT_NAME, name };
+}
+
+export function sendChatRequest(userId) {
+  return { type: SEND_CHAT_REQUEST, userId };
+}
+
+export function createNewChat(chat) {
+  return { type: CREATE_NEW_CHAT, chat };
 }

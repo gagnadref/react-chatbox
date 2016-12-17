@@ -37,6 +37,17 @@ export default function (server) {
         socket.broadcast.emit('update-user-list', users);
       });
 
+      socket.on('chat', (contactedUserId) => {
+        const chatId = guid();
+        const chat = {
+          chatId,
+          users: [contactedUserId, userId],
+          messages: [],
+        };
+        socket.emit('create-new-chat', chat);
+        connections[contactedUserId].emit('create-new-chat', chat);
+      });
+
       socket.on('message', (data) => {
         r.table('chat_messages')
           .insert(data)

@@ -10,7 +10,11 @@ class UserList extends Component {
 
           if (user.userId !== this.props.userId) {
             return (
-              <li key={`user-${index}`} className="user-item">
+              <li
+                key={`user-${index}`}
+                className="user-item"
+                onClick={() => this.props.sendChatRequest(user.userId)}
+              >
                 <p>
                   {user.name}
                 </p>
@@ -30,6 +34,7 @@ class UserList extends Component {
 UserList.propTypes = {
   users: PropTypes.object,
   userId: PropTypes.string,
+  sendChatRequest: PropTypes.func,
 };
 
 export default UserList;

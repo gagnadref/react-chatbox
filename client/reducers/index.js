@@ -1,21 +1,15 @@
 import { combineReducers } from 'redux';
-import {
-  UPDATE_MESSAGE,
-  ADD_MESSAGE,
-  ADD_RESPONSE,
-  SET_USER_ID,
-  UPDATE_USER_LIST,
-  UPDATE_NAME,
-  SUBMIT_NAME,
-} from '../actions/message-actions';
+
+import * as actions from '../actions/message-actions';
+
 
 export default function (initialState) {
   function messagesReducer(currentMessages = initialState.messages, action) {
     const messages = currentMessages.map(message => Object.assign({}, message));
 
     switch (action.type) {
-      case ADD_MESSAGE:
-      case ADD_RESPONSE:
+      case actions.ADD_MESSAGE:
+      case actions.ADD_RESPONSE:
         messages.push(Object.assign({}, action.message));
         return messages;
       default:
@@ -25,9 +19,9 @@ export default function (initialState) {
 
   function currentMessageReducer(currentMessage = initialState.currentMessage, action) {
     switch (action.type) {
-      case UPDATE_MESSAGE:
+      case actions.UPDATE_MESSAGE:
         return action.message;
-      case ADD_MESSAGE:
+      case actions.ADD_MESSAGE:
         return '';
       default:
         return currentMessage;
@@ -36,15 +30,15 @@ export default function (initialState) {
 
   function userReducer(currentUser = initialState.user, action) {
     switch (action.type) {
-      case SET_USER_ID:
+      case actions.SET_USER_ID:
         return Object.assign({}, currentUser, {
           userId: action.userId,
         });
-      case UPDATE_NAME:
+      case actions.UPDATE_NAME:
         return Object.assign({}, currentUser, {
           currentName: action.name,
         });
-      case SUBMIT_NAME:
+      case actions.SUBMIT_NAME:
         return Object.assign({}, currentUser, {
           name: action.name,
         });
@@ -54,11 +48,23 @@ export default function (initialState) {
   }
 
   function userListReducer(currentUserList = initialState.users, action) {
-    if (action.type === UPDATE_USER_LIST) {
+    if (action.type === actions.UPDATE_USER_LIST) {
       return action.users;
     }
 
     return currentUserList;
+  }
+
+  function chatListReducer(currentChatList = initialState.chats, action) {
+    const chats = currentChatList.map(chat => Object.assign({}, chat));
+
+    switch (action.type) {
+      case actions.CREATE_NEW_CHAT:
+        chats.push(Object.assign({}, action.chat));
+        return chats;
+      default:
+        return currentChatList;
+    }
   }
 
   return combineReducers({
@@ -66,5 +72,6 @@ export default function (initialState) {
     users: userListReducer,
     currentMessage: currentMessageReducer,
     messages: messagesReducer,
+    chats: chatListReducer,
   });
 }

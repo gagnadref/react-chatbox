@@ -13,6 +13,7 @@ class MessageEntryBox extends Component {
       if (trimmedMessage) {
         this.props.onSubmit({
           text: trimmedMessage,
+          chatId: this.props.chatId,
           userId: this.props.userId,
         });
       }
@@ -28,8 +29,8 @@ class MessageEntryBox extends Component {
           name="message"
           placeholder="Enter a message"
           value={this.props.value}
-          onChange={() => this.handleChange()}
-          onKeyPress={() => this.handleKeyPress()}
+          onChange={(ev) => this.handleChange(ev)}
+          onKeyPress={(ev) => this.handleKeyPress(ev)}
         />
       </div>
     );
@@ -37,6 +38,7 @@ class MessageEntryBox extends Component {
 }
 
 MessageEntryBox.propTypes = {
+  chatId: PropTypes.string,
   userId: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,

@@ -29,6 +29,7 @@ app.get('/', (request, response) => {
     users: {},
     currentMessage: '',
     messages: [],
+    chats: [],
   };
   const store = createStore((state = initialState) => state);
   const appContent = ReactDOMServer.renderToString(

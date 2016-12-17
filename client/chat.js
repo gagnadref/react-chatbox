@@ -16,6 +16,9 @@ export function chatMiddleware() {
       case actions.SUBMIT_NAME:
         socket.emit('name', action.name);
         break;
+      case actions.SEND_CHAT_REQUEST:
+        socket.emit('chat', action.userId);
+        break;
       default:
     }
 
@@ -36,5 +39,9 @@ export default function (store) {
 
   socket.on('message', (data) => {
     store.dispatch(actions.addResponse(data));
+  });
+
+  socket.on('create-new-chat', (chat) => {
+    store.dispatch(actions.createNewChat(chat));
   });
 }
