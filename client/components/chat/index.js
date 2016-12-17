@@ -17,7 +17,7 @@ const Chat = (props) => (
 
 Chat.propTypes = {
   userId: PropTypes.string,
-  messages: PropTypes.object,
+  messages: PropTypes.array,
   currentMessage: PropTypes.string,
   updateMessage: PropTypes.func,
   addMessage: PropTypes.func,

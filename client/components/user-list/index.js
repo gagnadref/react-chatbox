@@ -8,7 +8,7 @@ const UserList = (props) => (
         return (
           <li key={`user-${index}`} className="user-item">
             <p>
-              {user.name}
+              {user.userId}
             </p>
           </li>
         );
@@ -22,7 +22,7 @@ const UserList = (props) => (
 );
 
 UserList.propTypes = {
-  users: PropTypes.object,
+  users: PropTypes.array,
   userId: PropTypes.string,
 };
 

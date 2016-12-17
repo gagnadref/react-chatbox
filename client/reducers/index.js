@@ -4,15 +4,16 @@ import {
   ADD_MESSAGE,
   ADD_RESPONSE,
   SET_USER_ID,
+  UPDATE_USER_LIST,
 } from '../actions/message-actions';
 
 export default function (initialState) {
-  function messages(currentMessages = initialState.messages, action) {
+  function messagesReducer(currentMessages = initialState.messages, action) {
+    const messages = currentMessages.map(message => Object.assign({}, message));
+
     switch (action.type) {
       case ADD_MESSAGE:
       case ADD_RESPONSE:
-        const messages = currentMessages.map(message => Object.assign({}, message));
-
         messages.push(Object.assign({}, action.message));
         return messages;
       default:
@@ -20,7 +21,7 @@ export default function (initialState) {
     }
   }
 
-  function currentMessage(currentMessage = initialState.currentMessage, action) {
+  function currentMessageReducer(currentMessage = initialState.currentMessage, action) {
     switch (action.type) {
       case UPDATE_MESSAGE:
         return action.message;
@@ -31,7 +32,7 @@ export default function (initialState) {
     }
   }
 
-  function userId(currentUserId = initialState.userId, action) {
+  function userIdReducer(currentUserId = initialState.userId, action) {
     if (action.type === SET_USER_ID) {
       return action.userId;
     }
@@ -39,14 +40,18 @@ export default function (initialState) {
     return currentUserId;
   }
 
-  function users(currentUsers = initialState.users) {
+  function usersReducer(currentUsers = initialState.users, action) {
+    if (action.type === UPDATE_USER_LIST) {
+      return action.users;
+    }
+
     return currentUsers;
   }
 
   return combineReducers({
-    userId,
-    users,
-    currentMessage,
-    messages,
+    userIdReducer,
+    usersReducer,
+    currentMessageReducer,
+    messagesReducer,
   });
 }

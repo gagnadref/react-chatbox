@@ -1,21 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {} from './style.less';
 
 class MessageEntryBox extends Component {
-  render() {
-    return (
-      <div className="message-entry-box">
-        <textarea
-          name="message"
-          placeholder="Enter a message"
-          value={this.props.value}
-          onChange={this.handleChange.bind(this)}
-          onKeyPress={this.handleKeyPress.bind(this)}
-        />
-      </div>
-    );
-  }
-
   handleChange(ev) {
     this.props.onChange(ev.target.value);
   }
@@ -34,6 +20,27 @@ class MessageEntryBox extends Component {
       ev.preventDefault();
     }
   }
+
+  render() {
+    return (
+      <div className="message-entry-box">
+        <textarea
+          name="message"
+          placeholder="Enter a message"
+          value={this.props.value}
+          onChange={() => this.handleChange()}
+          onKeyPress={() => this.handleKeyPress()}
+        />
+      </div>
+    );
+  }
 }
+
+MessageEntryBox.propTypes = {
+  userId: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+};
 
 export default MessageEntryBox;

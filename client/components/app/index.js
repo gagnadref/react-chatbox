@@ -14,7 +14,7 @@ const App = (props) => (
 
 App.propTypes = {
   userId: PropTypes.string,
-  users: PropTypes.object,
+  users: PropTypes.array,
 };
 
 function mapStateToProps(state) {
