@@ -23,8 +23,10 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 // Routes
 app.get('/', (request, response) => {
   const initialState = {
-    userId: '',
-    users: [],
+    user: {
+      currentName: '',
+    },
+    users: {},
     currentMessage: '',
     messages: [],
   };
@@ -32,7 +34,7 @@ app.get('/', (request, response) => {
   const appContent = ReactDOMServer.renderToString(
     <Provider store={store}>
       <App />
-    </Provider>,
+    </Provider>
   );
 
   response.render('app', {

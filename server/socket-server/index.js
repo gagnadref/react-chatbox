@@ -6,7 +6,7 @@ export default function (server) {
   r.connect({}).then((dbConnection) => {
     const socketServer = io(server);
     const connections = {};
-    const users = [];
+    const users = {};
 
     r.table('chat_messages')
       .changes()
@@ -28,11 +28,14 @@ export default function (server) {
     socketServer.on('connection', (socket) => {
       const userId = guid();
       connections[userId] = socket;
-      users.push({ userId });
 
       socket.emit('start', { userId });
-      socket.emit('update-user-list', { users });
-      socket.broadcast.emit('update-user-list', { users });
+      socket.emit('update-user-list', users);
+
+      socket.on('name', (name) => {
+        users[userId] = { userId, name };
+        socket.broadcast.emit('update-user-list', users);
+      });
 
       socket.on('message', (data) => {
         r.table('chat_messages')
@@ -42,8 +45,8 @@ export default function (server) {
 
       socket.on('disconnect', () => {
         delete connections[userId];
-        users.splice(users.indexOf(userId), 1);
-        socket.broadcast.emit('update-user-list', { users });
+        delete users[userId];
+        socket.broadcast.emit('update-user-list', users);
       });
     });
   });

@@ -5,6 +5,8 @@ import {
   ADD_RESPONSE,
   SET_USER_ID,
   UPDATE_USER_LIST,
+  UPDATE_NAME,
+  SUBMIT_NAME,
 } from '../actions/message-actions';
 
 export default function (initialState) {
@@ -32,25 +34,36 @@ export default function (initialState) {
     }
   }
 
-  function userIdReducer(currentUserId = initialState.userId, action) {
-    if (action.type === SET_USER_ID) {
-      return action.userId;
+  function userReducer(currentUser = initialState.user, action) {
+    switch (action.type) {
+      case SET_USER_ID:
+        return Object.assign({}, currentUser, {
+          userId: action.userId,
+        });
+      case UPDATE_NAME:
+        return Object.assign({}, currentUser, {
+          currentName: action.name,
+        });
+      case SUBMIT_NAME:
+        return Object.assign({}, currentUser, {
+          name: action.name,
+        });
+      default:
+        return currentUser;
     }
-
-    return currentUserId;
   }
 
-  function usersReducer(currentUsers = initialState.users, action) {
+  function userListReducer(currentUserList = initialState.users, action) {
     if (action.type === UPDATE_USER_LIST) {
       return action.users;
     }
 
-    return currentUsers;
+    return currentUserList;
   }
 
   return combineReducers({
-    userId: userIdReducer,
-    users: usersReducer,
+    user: userReducer,
+    users: userListReducer,
     currentMessage: currentMessageReducer,
     messages: messagesReducer,
   });

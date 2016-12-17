@@ -5,12 +5,14 @@ class UserList extends Component {
   render() {
     return (
       <ul className="user-list">
-        {this.props.users.map((user, index) => {
+        {Object.keys(this.props.users).map((userId, index) => {
+          const user = this.props.users[userId];
+
           if (user.userId !== this.props.userId) {
             return (
               <li key={`user-${index}`} className="user-item">
                 <p>
-                  {user.userId}
+                  {user.name}
                 </p>
               </li>
             );
@@ -26,7 +28,7 @@ class UserList extends Component {
 }
 
 UserList.propTypes = {
-  users: PropTypes.array,
+  users: PropTypes.object,
   userId: PropTypes.string,
 };
 

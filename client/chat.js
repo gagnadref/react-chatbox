@@ -5,8 +5,18 @@ let socket = null;
 
 export function chatMiddleware() {
   return next => (action) => {
-    if (socket && action.type === actions.ADD_MESSAGE) {
-      socket.emit('message', action.message);
+    if (!socket) {
+      return next(action);
+    }
+
+    switch (action.type) {
+      case actions.ADD_MESSAGE:
+        socket.emit('message', action.message);
+        break;
+      case actions.SUBMIT_NAME:
+        socket.emit('name', action.name);
+        break;
+      default:
     }
 
     return next(action);
@@ -20,8 +30,8 @@ export default function (store) {
     store.dispatch(actions.setUserId(data.userId));
   });
 
-  socket.on('update-user-list', (data) => {
-    store.dispatch(actions.updateUserList(data.users));
+  socket.on('update-user-list', (users) => {
+    store.dispatch(actions.updateUserList(users));
   });
 
   socket.on('message', (data) => {
