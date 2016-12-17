@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+
 import {} from './style.less';
 import MessageList from '../message-list';
 import MessageEntryBox from '../message-entry-box';
 
 const Chat = (props) => (
-  <div>
+  <div className="chat">
     <MessageList userId={props.userId} messages={props.messages} />
     <MessageEntryBox
       chatId={props.chatId}

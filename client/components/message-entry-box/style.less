@@ -1,18 +1,30 @@
 .message-entry-box {
-  background-color: #dedede;
-  padding: 10px;
+  position: absolute;
+  margin: 0 10px;
+  bottom: 15px;
+  width: 100%;
+
+  .prompt {
+    position: absolute;
+    width: 4px;
+    height: 44px;
+    border-radius: 2px;
+    background-color: #2BAFE6;
+  }
 
   textarea {
+    font-size: 12px;
+    resize: none;
+    width: ~"calc(100% - 20px)";
+    padding-left: 12px;
     border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     box-sizing: border-box;
-    font-size: 14px;
-    height: 60px;
-    margin: 0;
-    padding: 4px;
-    width: 100%;
-
-    &:focus {
-      outline: none;
-    }
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
   }
 }

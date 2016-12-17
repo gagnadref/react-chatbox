@@ -25,6 +25,7 @@ class MessageEntryBox extends Component {
   render() {
     return (
       <div className="message-entry-box">
+        <div className="prompt" />
         <textarea
           name="message"
           placeholder="Enter a message"
