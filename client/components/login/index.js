@@ -22,9 +22,14 @@ class Login extends Component {
   render() {
     return (
       <div className="login-box">
+        <label htmlFor="message">
+          Please provide your name bellow to start chatting with other students
+        </label>
+        <div className="prompt" />
         <input
+          id="message"
           name="message"
-          placeholder="Your name"
+          placeholder="* Name"
           value={this.props.value}
           onChange={(ev) => this.handleChange(ev)}
           onKeyPress={(ev) => this.handleKeyPress(ev)}
