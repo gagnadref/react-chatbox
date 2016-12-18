@@ -26,6 +26,15 @@ class UserList extends Component {
             <span />
           );
         })}
+        {Object.keys(this.props.users).length === 0 &&
+          <li
+            className="user-item"
+          >
+            <p>
+              No one is available at the moment
+            </p>
+          </li>
+        }
       </ul>
     );
   }
