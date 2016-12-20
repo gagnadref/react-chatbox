@@ -4,9 +4,12 @@
 
 Install Webpack, Babel and Nodemon globally:
 ```
-npm install -g webpack
-npm install -g babel-cli
-npm install nodemon -g
+npm install -g webpack babel-cli nodemon
+```
+
+Install other dependencies:
+```
+npm install
 ```
 
 Install [RethinkDB](https://www.rethinkdb.com/docs/install/). On MacOS X:
