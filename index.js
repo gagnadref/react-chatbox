@@ -1,12 +1,14 @@
 import server from './server';
-import http from 'http';
 import socketServer from './server/socket-server';
 
 const config = {};
 
+config.port = 3000;
+config.host = 'localhost';
+server.locals.assetPath = '';
+server.locals.isDevelopment = false;
+
 if (process.env.NODE_ENV === 'development') {
-  config.port = 3000;
-  config.host = 'localhost';
   server.locals.assetPath = 'http://localhost:8080/';
   server.locals.isDevelopment = true;
 }
