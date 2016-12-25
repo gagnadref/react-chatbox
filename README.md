@@ -30,3 +30,12 @@ npm run webpack-dev
 npm run start-dev
 ```
 You can now access the chatbox on [http://localhost:3000/](http://localhost:3000/).
+
+## Deploy to production
+
+```
+ssh root@146.185.138.123
+cd /var/www/react-chatbox
+git pull
+pm2 restart all
+```
