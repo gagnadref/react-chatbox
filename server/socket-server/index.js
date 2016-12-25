@@ -41,7 +41,10 @@ export default function (server) {
         const chatId = guid();
         const chat = {
           chatId,
-          users: [contactedUserId, userId],
+          users: {
+            [contactedUserId]: users[contactedUserId],
+            [userId]: users[userId],
+          },
           messages: [],
         };
         socket.emit('create-new-chat', chat);

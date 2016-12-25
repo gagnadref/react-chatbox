@@ -25,10 +25,8 @@ class App extends Component {
               return (
                 <li key={`chat-${index}`} className="chat-item">
                   <Chat
-                    chatId={chatId}
+                    chat={chat}
                     userId={this.props.user.userId}
-                    messages={chat.messages}
-                    currentMessage={chat.currentMessage}
                     updateMessage={this.props.updateMessage}
                     addMessage={this.props.addMessage}
                   />
