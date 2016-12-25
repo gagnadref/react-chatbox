@@ -19,6 +19,10 @@ export function chatMiddleware() {
       case actions.SEND_CHAT_REQUEST:
         socket.emit('chat', action.userId);
         break;
+      case actions.TRANSLATE:
+        // TODO: send translation request
+        // TODO: move this to API middleware
+        break;
       default:
     }
 

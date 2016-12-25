@@ -7,6 +7,7 @@ export const UPDATE_NAME = 'updateName';
 export const SUBMIT_NAME = 'submitName';
 export const SEND_CHAT_REQUEST = 'sendChatRequest';
 export const CREATE_NEW_CHAT = 'createNewChat';
+export const TRANSLATE = 'translate';
 
 export function updateMessage(chatId, message) {
   return { type: UPDATE_MESSAGE, chatId, message };
@@ -42,4 +43,8 @@ export function sendChatRequest(userId) {
 
 export function createNewChat(chat) {
   return { type: CREATE_NEW_CHAT, chat };
+}
+
+export function translate(chatId, messageIndex) {
+  return { type: TRANSLATE, chatId, messageIndex };
 }

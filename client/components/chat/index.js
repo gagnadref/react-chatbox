@@ -13,7 +13,12 @@ const Chat = (props) => {
   return (
     <div className="chat">
       <div className="chat-title">{title}</div>
-      <MessageList userId={props.userId} messages={props.chat.messages} />
+      <MessageList
+        chatId={props.chat.chatId}
+        userId={props.userId}
+        messages={props.chat.messages}
+        translate={props.translate}
+      />
       <MessageEntryBox
         chatId={props.chat.chatId}
         value={props.chat.currentMessage}
@@ -30,6 +35,7 @@ Chat.propTypes = {
   userId: PropTypes.string,
   updateMessage: PropTypes.func,
   addMessage: PropTypes.func,
+  translate: PropTypes.func,
 };
 
 export default Chat;
