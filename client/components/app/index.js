@@ -29,6 +29,7 @@ class App extends Component {
                     userId={this.props.user.userId}
                     updateMessage={this.props.updateMessage}
                     addMessage={this.props.addMessage}
+                    translate={this.props.translate}
                   />
                 </li>
               );
