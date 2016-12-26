@@ -14,7 +14,6 @@ const Chat = (props) => {
     <div className="chat">
       <div className="chat-title">{title}</div>
       <MessageList
-        chatId={props.chat.chatId}
         userId={props.userId}
         messages={props.chat.messages}
         translate={props.translate}

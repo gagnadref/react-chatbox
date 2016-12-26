@@ -68,6 +68,17 @@ export default function (initialState) {
             messages,
           }),
         });
+      case actions.TRANSLATION_REQUEST_SUCCESS:
+        messages = currentChatList[action.message.chatId].messages.map(
+          message => Object.assign({}, message)
+        );
+        messages[action.messageIndex].translation = action.translation;
+
+        return Object.assign({}, currentChatList, {
+          [action.message.chatId]: Object.assign({}, currentChatList[action.message.chatId], {
+            messages,
+          }),
+        });
       default:
         return currentChatList;
     }

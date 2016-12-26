@@ -12,7 +12,7 @@ const MessageList = (props) => (
           <p className={`message ${isResponse ? 'is-response' : ''}`}>
             {message.text}<br />
             {isResponse && !isTranslated &&
-              <a className="translate-button" onClick={() => props.translate(props.chatId, index)}>
+              <a className="translate-button" onClick={() => props.translate(message, index)}>
                 See translation
               </a>
             }
@@ -27,8 +27,7 @@ const MessageList = (props) => (
 );
 
 MessageList.propTypes = {
-  chatId: PropTypes.number,
-  messages: PropTypes.object,
+  messages: PropTypes.array,
   userId: PropTypes.string,
   translate: PropTypes.func,
 };

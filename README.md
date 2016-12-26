@@ -10,6 +10,7 @@ npm install -g webpack babel-cli nodemon
 Install other dependencies:
 ```
 npm install
+cp client/config.js.dist client/config.js
 ```
 
 Install [RethinkDB](https://www.rethinkdb.com/docs/install/). On MacOS X:
