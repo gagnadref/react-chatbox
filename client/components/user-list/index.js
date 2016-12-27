@@ -26,7 +26,7 @@ class UserList extends Component {
             <span />
           );
         })}
-        {Object.keys(this.props.users).length === 0 &&
+        {Object.keys(this.props.users).length <= 1 &&
           <li
             className="user-item"
           >
