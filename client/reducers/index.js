@@ -33,6 +33,7 @@ export default function (initialState) {
 
   function chatListReducer(currentChatList = initialState.chats, action) {
     let messages;
+    let chats;
 
     switch (action.type) {
       case actions.CREATE_NEW_CHAT:
@@ -79,6 +80,13 @@ export default function (initialState) {
             messages,
           }),
         });
+      case actions.CLOSE_CHAT:
+        chats = Object.assign({}, currentChatList, {
+          [action.chatId]: Object.assign({}, currentChatList[action.chatId]),
+        });
+        delete chats[action.chatId];
+
+        return chats;
       default:
         return currentChatList;
     }

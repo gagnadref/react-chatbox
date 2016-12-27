@@ -30,6 +30,7 @@ class App extends Component {
                     updateMessage={this.props.updateMessage}
                     addMessage={this.props.addMessage}
                     translate={this.props.translate}
+                    onClose={this.props.closeChat}
                   />
                 </li>
               );
@@ -58,6 +59,8 @@ App.propTypes = {
   submitName: PropTypes.func,
   updateMessage: PropTypes.func,
   addMessage: PropTypes.func,
+  translate: PropTypes.func,
+  closeChat: PropTypes.func,
 };
 
 function mapStateToProps(state) {
