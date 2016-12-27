@@ -14,7 +14,7 @@ const Chat = (props) => {
     <div className="chat">
       <div className="chat-title">
         {title}
-        <span className="chat-close">
+        <span className="chat-close" onClick={() => props.onClose(props.chat.chatId)}>
           <i className="icon-close"></i>
         </span>
       </div>
@@ -40,6 +40,7 @@ Chat.propTypes = {
   updateMessage: PropTypes.func,
   addMessage: PropTypes.func,
   translate: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 export default Chat;
