@@ -9,13 +9,20 @@ import App from './components/app';
 import reducers from './reducers';
 import startChat, { chatMiddleware } from './chat';
 
-const initialState = window.INITIAL_STATE;
+const initialState = localStorage.getItem('reduxState') ?
+  JSON.parse(localStorage.getItem('reduxState')) :
+  window.INITIAL_STATE;
+
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
   chatMiddleware,
   createLogger()
 )(createStore);
 const store = createStoreWithMiddleware(reducers(initialState));
+
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
 
 startChat(store);
 

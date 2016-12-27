@@ -29,11 +29,15 @@ export function chatMiddleware() {
 export default function (store) {
   socket = io.connect(`${location.protocol}//${location.host}`);
 
-  socket.on('start', (data) => {
-    store.dispatch(actions.setUserId(data.userId));
+  socket.on('connect', () => {
+    socket.emit('join', store.getState().user);
   });
 
-  socket.on('update-user-list', (users) => {
+  socket.on('setUserId', (userId) => {
+    store.dispatch(actions.setUserId(userId));
+  });
+
+  socket.on('updateUserList', (users) => {
     store.dispatch(actions.updateUserList(users));
   });
 
@@ -41,7 +45,7 @@ export default function (store) {
     store.dispatch(actions.addResponse(data));
   });
 
-  socket.on('create-new-chat', (chat) => {
+  socket.on('createNewChat', (chat) => {
     store.dispatch(actions.createNewChat(chat));
   });
 }

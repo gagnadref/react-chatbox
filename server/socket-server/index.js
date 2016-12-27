@@ -26,15 +26,25 @@ export default function (server) {
       });
 
     socketServer.on('connection', (socket) => {
-      const userId = guid();
-      connections[userId] = socket;
+      let userId;
 
-      socket.emit('start', { userId });
-      socket.emit('update-user-list', users);
+      socket.on('join', (user) => {
+        if (!user.userId) {
+          userId = guid();
+          socket.emit('setUserId', userId);
+        } else {
+          userId = user.userId;
+        }
+
+        connections[userId] = socket;
+        users[userId] = { userId, name: user.name };
+        socket.emit('updateUserList', users);
+        socket.broadcast.emit('updateUserList', users);
+      });
 
       socket.on('name', (name) => {
         users[userId] = { userId, name };
-        socket.broadcast.emit('update-user-list', users);
+        socket.broadcast.emit('updateUserList', users);
       });
 
       socket.on('chat', (contactedUserId) => {
@@ -47,8 +57,8 @@ export default function (server) {
           },
           messages: [],
         };
-        socket.emit('create-new-chat', chat);
-        connections[contactedUserId].emit('create-new-chat', chat);
+        socket.emit('createNewChat', chat);
+        connections[contactedUserId].emit('createNewChat', chat);
       });
 
       socket.on('message', (data) => {
@@ -60,7 +70,7 @@ export default function (server) {
       socket.on('disconnect', () => {
         delete connections[userId];
         delete users[userId];
-        socket.broadcast.emit('update-user-list', users);
+        socket.broadcast.emit('updateUserList', users);
       });
     });
   });
