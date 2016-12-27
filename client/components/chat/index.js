@@ -12,7 +12,12 @@ const Chat = (props) => {
 
   return (
     <div className="chat">
-      <div className="chat-title">{title}</div>
+      <div className="chat-title">
+        {title}
+        <span className="chat-close">
+          <i className="icon-close"></i>
+        </span>
+      </div>
       <MessageList
         userId={props.userId}
         messages={props.chat.messages}
