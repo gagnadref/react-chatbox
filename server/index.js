@@ -11,7 +11,7 @@ const app = express();
 
 // View templates
 app.engine('handlebars', handlebars({
-  defaultLayout: 'main',
+  defaultLayout: 'etudiant.gouv.handlebars',
   layoutsDir: path.resolve(__dirname, 'views/layouts'),
 }));
 app.set('view engine', 'handlebars');

@@ -80,6 +80,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.etudiant.gouv.fr/mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    {{#unless isDevelopment}}
+      <link rel="stylesheet" href="{{assetPath}}bundle.css">
+    {{/unless}}
 </head>
 
 <body class="" id="cid106460" vocab="http://schema.org/">
@@ -2596,6 +2599,8 @@
             </div>
         </div>
     </footer>
+    {{{body}}}
+    <script src="{{assetPath}}bundle.js" async></script>
     <script type="text/javascript" src="/lib/other_tools/template_corex/vendors/isotope/jquery.isotope.min.js"></script>
     <script type="text/javascript" src="/lib/other_tools/template_corex/vendors/isotope/jquery.isotope.sloppy-masonry.min.js"></script>
     <script type="text/javascript" src="/lib/other_tools/images_loaded/imagesloaded.min.js"></script>
