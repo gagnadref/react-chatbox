@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import {} from './style.less';
 import * as messageActionCreators from '../../actions/message-actions';
 import UserList from '../user-list';
-import Chat from '../chat';
+import ChatList from '../chat-list';
 import Login from '../login';
 
 class App extends Component {
@@ -14,28 +14,20 @@ class App extends Component {
       return (
         <div>
           <UserList
+            chats={this.props.chats}
             userId={this.props.user.userId}
             users={this.props.users}
             sendChatRequest={this.props.sendChatRequest}
+            openChat={this.props.openChat}
           />
-          <ol className="chat-list">
-            {Object.keys(this.props.chats).map((chatId, index) => {
-              const chat = this.props.chats[chatId];
-
-              return (
-                <li key={`chat-${index}`} className="chat-item">
-                  <Chat
-                    chat={chat}
-                    userId={this.props.user.userId}
-                    updateMessage={this.props.updateMessage}
-                    addMessage={this.props.addMessage}
-                    translate={this.props.translate}
-                    onClose={this.props.closeChat}
-                  />
-                </li>
-              );
-            })}
-          </ol>
+          <ChatList
+            userId={this.props.user.userId}
+            chats={this.props.chats}
+            updateMessage={this.props.updateMessage}
+            addMessage={this.props.addMessage}
+            translate={this.props.translate}
+            closeChat={this.props.closeChat}
+          />
         </div>
       );
     }
@@ -61,6 +53,7 @@ App.propTypes = {
   addMessage: PropTypes.func,
   translate: PropTypes.func,
   closeChat: PropTypes.func,
+  openChat: PropTypes.func,
 };
 
 function mapStateToProps(state) {

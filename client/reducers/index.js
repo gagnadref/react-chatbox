@@ -33,7 +33,6 @@ export default function (initialState) {
 
   function chatListReducer(currentChatList = initialState.chats, action) {
     let messages;
-    let chats;
 
     switch (action.type) {
       case actions.CREATE_NEW_CHAT:
@@ -67,6 +66,7 @@ export default function (initialState) {
         return Object.assign({}, currentChatList, {
           [action.message.chatId]: Object.assign({}, currentChatList[action.message.chatId], {
             messages,
+            isClosed: false,
           }),
         });
       case actions.TRANSLATION_REQUEST_SUCCESS:
@@ -81,12 +81,17 @@ export default function (initialState) {
           }),
         });
       case actions.CLOSE_CHAT:
-        chats = Object.assign({}, currentChatList, {
-          [action.chatId]: Object.assign({}, currentChatList[action.chatId]),
+        return Object.assign({}, currentChatList, {
+          [action.chatId]: Object.assign({}, currentChatList[action.chatId], {
+            isClosed: true,
+          }),
         });
-        delete chats[action.chatId];
-
-        return chats;
+      case actions.OPEN_CHAT:
+        return Object.assign({}, currentChatList, {
+          [action.chatId]: Object.assign({}, currentChatList[action.chatId], {
+            isClosed: false,
+          }),
+        });
       default:
         return currentChatList;
     }

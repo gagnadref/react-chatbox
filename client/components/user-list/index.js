@@ -2,6 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import {} from './style.less';
 
 class UserList extends Component {
+  getChatByUserId(userId) {
+    return Object.keys(this.props.chats).find((chatId) => userId in this.props.chats[chatId].users);
+  }
+
+  handleClick(userId) {
+    const chatId = this.getChatByUserId(userId);
+
+    if (chatId) {
+      this.props.openChat(chatId);
+    } else {
+      this.props.sendChatRequest(userId);
+    }
+  }
+
   render() {
     return (
       <ul className="user-list">
@@ -13,7 +27,7 @@ class UserList extends Component {
               <li
                 key={`user-${index}`}
                 className="user-item"
-                onClick={() => this.props.sendChatRequest(user.userId)}
+                onClick={() => this.handleClick(user.userId)}
               >
                 <p>
                   {user.name}
@@ -41,9 +55,11 @@ class UserList extends Component {
 }
 
 UserList.propTypes = {
+  chats: PropTypes.object,
   users: PropTypes.object,
   userId: PropTypes.string,
   sendChatRequest: PropTypes.func,
+  openChat: PropTypes.func,
 };
 
 export default UserList;
