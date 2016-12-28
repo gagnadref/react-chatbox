@@ -1,0 +1,236 @@
+@font-face {
+    font-family: 'Oswald Bold';
+    src: url('Oswald-bold.eot');
+    src: url('Oswald-bold.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-bold.woff2') format('woff2'),
+         url('Oswald-bold.woff') format('woff'),
+         url('Oswald-bold.ttf') format('truetype'),
+         url('Oswald-bold.svg#oswaldbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Bold Italic';
+    src: url('Oswald-bolditalic.eot');
+    src: url('Oswald-bolditalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-bolditalic.woff2') format('woff2'),
+         url('Oswald-bolditalic.woff') format('woff'),
+         url('Oswald-bolditalic.ttf') format('truetype'),
+         url('Oswald-bolditalic.svg#oswaldbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald DemiBold';
+    src: url('Oswald-demibold.eot');
+    src: url('Oswald-demibold.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-demibold.woff2') format('woff2'),
+         url('Oswald-demibold.woff') format('woff'),
+         url('Oswald-demibold.ttf') format('truetype'),
+         url('Oswald-demibold.svg#oswalddemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald DemiBold Italic';
+    src: url('Oswald-demi-bolditalic.eot');
+    src: url('Oswald-demi-bolditalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-demi-bolditalic.woff2') format('woff2'),
+         url('Oswald-demi-bolditalic.woff') format('woff'),
+         url('Oswald-demi-bolditalic.ttf') format('truetype'),
+         url('Oswald-demi-bolditalic.svg#oswalddemi-bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Extra-Light';
+    src: url('Oswald-extralight.eot');
+    src: url('Oswald-extralight.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-extralight.woff2') format('woff2'),
+         url('Oswald-extralight.woff') format('woff'),
+         url('Oswald-extralight.ttf') format('truetype'),
+         url('Oswald-extralight.svg#oswaldextralight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Extra-Light Italic';
+    src: url('Oswald-extra-lightitalic.eot');
+    src: url('Oswald-extra-lightitalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-extra-lightitalic.woff2') format('woff2'),
+         url('Oswald-extra-lightitalic.woff') format('woff'),
+         url('Oswald-extra-lightitalic.ttf') format('truetype'),
+         url('Oswald-extra-lightitalic.svg#oswaldextra-light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Heavy';
+    src: url('Oswald-heavy.eot');
+    src: url('Oswald-heavy.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-heavy.woff2') format('woff2'),
+         url('Oswald-heavy.woff') format('woff'),
+         url('Oswald-heavy.ttf') format('truetype'),
+         url('Oswald-heavy.svg#oswaldheavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Heavy Italic';
+    src: url('Oswald-heavyitalic.eot');
+    src: url('Oswald-heavyitalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-heavyitalic.woff2') format('woff2'),
+         url('Oswald-heavyitalic.woff') format('woff'),
+         url('Oswald-heavyitalic.ttf') format('truetype'),
+         url('Oswald-heavyitalic.svg#oswaldheavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Light';
+    src: url('Oswald-light.eot');
+    src: url('Oswald-light.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-light.woff2') format('woff2'),
+         url('Oswald-light.woff') format('woff'),
+         url('Oswald-light.ttf') format('truetype'),
+         url('Oswald-light.svg#oswaldlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Light Italic';
+    src: url('Oswald-lightitalic.eot');
+    src: url('Oswald-lightitalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-lightitalic.woff2') format('woff2'),
+         url('Oswald-lightitalic.woff') format('woff'),
+         url('Oswald-lightitalic.ttf') format('truetype'),
+         url('Oswald-lightitalic.svg#oswaldlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Medium';
+    src: url('Oswald-medium.eot');
+    src: url('Oswald-medium.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-medium.woff2') format('woff2'),
+         url('Oswald-medium.woff') format('woff'),
+         url('Oswald-medium.ttf') format('truetype'),
+         url('Oswald-medium.svg#oswaldmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Medium Italic';
+    src: url('Oswald-mediumitalic.eot');
+    src: url('Oswald-mediumitalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-mediumitalic.woff2') format('woff2'),
+         url('Oswald-mediumitalic.woff') format('woff'),
+         url('Oswald-mediumitalic.ttf') format('truetype'),
+         url('Oswald-mediumitalic.svg#oswaldmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('Oswald-regular.eot');
+    src: url('Oswald-regular.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-regular.woff2') format('woff2'),
+         url('Oswald-regular.woff') format('woff'),
+         url('Oswald-regular.ttf') format('truetype'),
+         url('Oswald-regular.svg#oswald_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Italic';
+    src: url('Oswald-regularitalic.eot');
+    src: url('Oswald-regularitalic.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-regularitalic.woff2') format('woff2'),
+         url('Oswald-regularitalic.woff') format('woff'),
+         url('Oswald-regularitalic.ttf') format('truetype'),
+         url('Oswald-regularitalic.svg#oswaldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Oswald Stencil';
+    src: url('Oswald-stencil.eot');
+    src: url('Oswald-stencil.eot?#iefix') format('embedded-opentype'),
+         url('Oswald-stencil.woff2') format('woff2'),
+         url('Oswald-stencil.woff') format('woff'),
+         url('Oswald-stencil.ttf') format('truetype'),
+         url('Oswald-stencil.svg#oswald_stencilbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

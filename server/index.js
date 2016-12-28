@@ -19,6 +19,7 @@ app.set('views', path.resolve(__dirname, 'views'));
 
 // Static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, '../www.etudiant.gouv.fr')));
 
 // Routes
 app.get('/', (request, response) => {
