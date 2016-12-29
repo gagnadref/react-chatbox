@@ -9,8 +9,10 @@ import App from './components/app';
 import reducers from './reducers';
 import startChat, { chatMiddleware } from './chat';
 
-const initialState = localStorage.getItem('reduxState') ?
-  JSON.parse(localStorage.getItem('reduxState')) :
+
+const localStorageState = localStorage.getItem('reduxState');
+const initialState = localStorageState && 'isOpen' in JSON.parse(localStorageState) ?
+  JSON.parse(localStorageState) :
   window.INITIAL_STATE;
 
 const createStoreWithMiddleware = applyMiddleware(

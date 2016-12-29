@@ -1,8 +1,9 @@
 import Yandex from '../services/yandex.js';
 
-export const UPDATE_MESSAGE = 'update-message';
-export const ADD_MESSAGE = 'add-message';
-export const ADD_RESPONSE = 'add-response';
+export const TOGGLE_CHATBOX = 'toggleChatbox';
+export const UPDATE_MESSAGE = 'updateMessage';
+export const ADD_MESSAGE = 'addMessage';
+export const ADD_RESPONSE = 'addResponse';
 export const SET_USER_ID = 'setUserId';
 export const UPDATE_USER_LIST = 'updateUserList';
 export const UPDATE_NAME = 'updateName';
@@ -13,6 +14,10 @@ export const CLOSE_CHAT = 'closeChat';
 export const OPEN_CHAT = 'openChat';
 export const TRANSLATION_REQUEST_SENT = 'translationRequestSent';
 export const TRANSLATION_REQUEST_SUCCESS = 'translationRequestSuccess';
+
+export function toggleChatbox() {
+  return { type: TOGGLE_CHATBOX };
+}
 
 export function updateMessage(chatId, message) {
   return { type: UPDATE_MESSAGE, chatId, message };

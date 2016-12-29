@@ -4,6 +4,15 @@ import * as actions from '../actions/message-actions';
 
 
 export default function (initialState) {
+  function isOpenReducer(currentIsOpen = initialState.isOpen, action) {
+    switch (action.type) {
+      case actions.TOGGLE_CHATBOX:
+        return !currentIsOpen;
+      default:
+        return currentIsOpen;
+    }
+  }
+
   function userReducer(currentUser = initialState.user, action) {
     switch (action.type) {
       case actions.SET_USER_ID:
@@ -98,6 +107,7 @@ export default function (initialState) {
   }
 
   return combineReducers({
+    isOpen: isOpenReducer,
     user: userReducer,
     users: userListReducer,
     chats: chatListReducer,

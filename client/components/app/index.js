@@ -11,15 +11,19 @@ import Login from '../login';
 const App = (props) => (
   <div>
     <div className="user-list-container">
-      <div className="user-list-title">Talk to other students</div>
-      {props.user.name ?
+      <div className="user-list-title" onClick={() => props.toggleChatbox()}>
+        Talk to other students
+      </div>
+      {props.user.name && props.isOpen &&
         <UserList
           chats={props.chats}
           userId={props.user.userId}
           users={props.users}
           sendChatRequest={props.sendChatRequest}
           openChat={props.openChat}
-        /> :
+        />
+      }
+      {!props.user.name && props.isOpen &&
         <Login
           value={props.user.currentName}
           onChange={props.updateName}
@@ -27,18 +31,21 @@ const App = (props) => (
         />
       }
     </div>
-    <ChatList
-      userId={props.user.userId}
-      chats={props.chats}
-      updateMessage={props.updateMessage}
-      addMessage={props.addMessage}
-      translate={props.translate}
-      closeChat={props.closeChat}
-    />
+    {props.isOpen &&
+      <ChatList
+        userId={props.user.userId}
+        chats={props.chats}
+        updateMessage={props.updateMessage}
+        addMessage={props.addMessage}
+        translate={props.translate}
+        closeChat={props.closeChat}
+      />
+    }
   </div>
 );
 
 App.propTypes = {
+  isOpen: PropTypes.bool,
   users: PropTypes.object,
   user: PropTypes.object,
   chats: PropTypes.object,
@@ -50,10 +57,12 @@ App.propTypes = {
   translate: PropTypes.func,
   closeChat: PropTypes.func,
   openChat: PropTypes.func,
+  toggleChatbox: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
+    isOpen: state.isOpen,
     user: state.user,
     chats: state.chats,
     users: state.users,
