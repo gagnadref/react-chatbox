@@ -1,0 +1,34 @@
+@font-face {
+	font-family: 'mesr-icons';
+	src:url('./fonts/mesr-icons.eot?qs56dx');
+	src:url('./fonts/mesr-icons.eot?#iefixqs56dx') format('embedded-opentype'),
+		url('./fonts/mesr-icons.ttf?qs56dx') format('truetype'),
+		url('./fonts/mesr-icons.woff?qs56dx') format('woff'),
+		url('./fonts/mesr-icons.svg?qs56dx#mesr-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.mesr-icon {
+	font-family: 'mesr-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.mesr-icon.icon-dailymotion:before {
+	content: "\e600";
+}
+.mesr-icon.icon-scoopit:before {
+	content: "\e601";
+}
+.mesr-icon.icon-top:before {
+	content: "\e602";
+}

@@ -1,0 +1,176 @@
+@font-face {
+	font-family: 'etudiant-icons';
+	src: url('./Glyphter.eot');
+        src: url('./Glyphter?#iefix') format('embedded-opentype'),
+            url('./Glyphter.woff2') format('woff2'),
+            url('./Glyphter.woff') format('woff'),
+            url('./Glyphter.ttf') format('truetype');            
+	font-weight: normal;
+	font-style: normal;
+}
+
+.etudiant-icon {
+	font-family: 'etudiant-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.etudiant-icon.icon-chevron-haut:before{
+	content:"\0041";
+}
+
+.etudiant-icon.icon-addition:before{
+	content:"\0042";
+}
+
+.etudiant-icon.icon-chevron-droite:before{
+	content:"\0043";
+}
+
+.etudiant-icon.icon-acceuil:before{
+	content:"\0044";
+}
+
+.etudiant-icon.icon-agenda:before{
+	content:"\0045";
+}
+
+.etudiant-icon.icon-compte:before{
+	content:"\0046";
+}
+
+.etudiant-icon.icon-contact:before{
+	content:"\0047";
+}
+
+.etudiant-icon.icon-fleche:before{
+	content:"\0048";
+}
+
+.etudiant-icon.icon-haut:before{
+	content:"\0049";
+}
+
+.etudiant-icon.icon-instagram:before{
+	content:"\004a";
+}
+
+.etudiant-icon.icon-lecture:before{
+	content:"\004b";
+}
+
+.etudiant-icon.icon-liste:before{
+	content:"\004c";
+}
+
+.etudiant-icon.icon-mesServices:before{
+	content:"\004d";
+}
+
+.etudiant-icon.icon-moins:before{
+	content:"\004e";
+}
+
+.etudiant-icon.icon-pdf:before{
+	content:"\004f";
+}
+
+.etudiant-icon.icon-plus:before{
+	content:"\0050";
+}
+
+.etudiant-icon.icon-plus-2:before{
+	content:"\0051";
+}
+
+.etudiant-icon.icon-precedent:before{
+	content:"\0052";
+}
+
+.etudiant-icon.icon-rss:before{
+	content:"\0053";
+}
+
+.etudiant-icon.icon-sabonner:before{
+	content:"\0054";
+}
+
+.etudiant-icon.icon-search:before{
+	content:"\0055";
+}
+
+.etudiant-icon.icon-share:before{
+	content:"\0056";
+}
+
+.etudiant-icon.icon-social-dailymotion:before{
+	content:"\0057";
+}
+
+.etudiant-icon.icon-social-deliverIt:before{
+	content:"\0058";
+}
+
+.etudiant-icon.icon-social-facebook:before{
+	content:"\0059";
+}
+
+.etudiant-icon.icon-social-g-plus:before{
+	content:"\005a";
+}
+
+.etudiant-icon.icon-social-linked-in:before{
+	content:"\0061";
+}
+
+.etudiant-icon.icon-social-mail:before{
+	content:"\0062";
+}
+
+.etudiant-icon.icon-social-pinterest:before{
+	content:"\0063";
+}
+
+.etudiant-icon.icon-social-rss:before{
+	content:"\0064";
+}
+
+.etudiant-icon.icon-social-twitter:before{
+	content:"\0065";
+}
+
+.etudiant-icon.icon-social-viadeo:before{
+	content:"\0066";
+}
+
+.etudiant-icon.icon-suivant:before{
+	content:"\0067";
+}
+
+.etudiant-icon.icon-tableau:before{
+	content:"\0068";
+}
+
+.etudiant-icon.icon-telecharger:before{
+	content:"\0069";
+}
+
+.etudiant-icon.icon-ticket:before{
+	content:"\006a";
+}
+
+.etudiant-icon.icon-v:before{
+	content:"\006b";
+}
+
+.etudiant-icon.icon-X:before{
+	content:"\006c";
+}
