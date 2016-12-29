@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -8,39 +8,35 @@ import UserList from '../user-list';
 import ChatList from '../chat-list';
 import Login from '../login';
 
-class App extends Component {
-  render() {
-    if (this.props.user.name) {
-      return (
-        <div>
-          <UserList
-            chats={this.props.chats}
-            userId={this.props.user.userId}
-            users={this.props.users}
-            sendChatRequest={this.props.sendChatRequest}
-            openChat={this.props.openChat}
-          />
-          <ChatList
-            userId={this.props.user.userId}
-            chats={this.props.chats}
-            updateMessage={this.props.updateMessage}
-            addMessage={this.props.addMessage}
-            translate={this.props.translate}
-            closeChat={this.props.closeChat}
-          />
-        </div>
-      );
-    }
-
-    return (
-      <Login
-        value={this.props.user.currentName}
-        onChange={this.props.updateName}
-        onSubmit={this.props.submitName}
-      />
-    );
-  }
-}
+const App = (props) => (
+  <div>
+    <div className="user-list-container">
+      <div className="user-list-title">Talk to other students</div>
+      {props.user.name ?
+        <UserList
+          chats={props.chats}
+          userId={props.user.userId}
+          users={props.users}
+          sendChatRequest={props.sendChatRequest}
+          openChat={props.openChat}
+        /> :
+        <Login
+          value={props.user.currentName}
+          onChange={props.updateName}
+          onSubmit={props.submitName}
+        />
+      }
+    </div>
+    <ChatList
+      userId={props.user.userId}
+      chats={props.chats}
+      updateMessage={props.updateMessage}
+      addMessage={props.addMessage}
+      translate={props.translate}
+      closeChat={props.closeChat}
+    />
+  </div>
+);
 
 App.propTypes = {
   users: PropTypes.object,

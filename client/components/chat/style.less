@@ -1,18 +1,21 @@
+@import "../app/variables.less";
+
 .chat {
   width: 260px;
   height: 335px;
   position: relative;
-  background-color: #FFF;
+  background-color: @white;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border: solid 1px #F3F4F5;
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+  border: solid 1px @grey-light;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.3);
 }
 
 .chat-title {
-  color: #888888;
-  padding: 5px 10px;
-  border-bottom: solid 1px #F3F4F5;
+  color: @grey;
+  padding: 8px 10px;
+  border-bottom: solid 1px @grey-light;
+  font-weight: bold;
 }
 
 .chat-close {

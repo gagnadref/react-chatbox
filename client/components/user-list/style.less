@@ -1,24 +1,43 @@
-.user-list {
+@import "../app/variables.less";
+
+.user-list-container {
   float: right;
-  width: 200px;
-  height: 335px;
   margin: 10px 5px 0 10px;
-  background-color: #FFF;
-  list-style: none;
-  padding: 0;
-  padding-top: 10px;
+  background-color: @white;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  border: solid 1px #F3F4F5;
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+  border: solid 1px @grey-light;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.3);
 
-  .user-item {
-    padding: 2px 15px;
-    color: #888888;
-    cursor: pointer;
+  .user-list-title {
+    color: @white;
+    background-color: @green;
+    padding: 8px 10px;
+    border-bottom: solid 1px @grey-light;
+    font-weight: bold;
+    font-size: 14px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
 
-    &:hover {
-      background-color: #F3F4F5;
+  .user-list {
+    width: 200px;
+    height: 286px;
+    list-style: none;
+    padding: 0;
+
+    .user-item {
+      padding: 2px 15px;
+      color: @grey;
+      cursor: pointer;
+
+      &:hover {
+        background-color: @grey-light;
+      }
+
+      p {
+        margin: 12px 0;
+      }
     }
   }
 }
