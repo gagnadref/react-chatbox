@@ -11,7 +11,7 @@ import startChat, { chatMiddleware } from './chat';
 
 
 const localStorageState = localStorage.getItem('reduxState');
-const initialState = localStorageState && 'isOpen' in JSON.parse(localStorageState) ?
+const initialState = localStorageState && 'nameCurrent' in JSON.parse(localStorageState).user ?
   JSON.parse(localStorageState) :
   window.INITIAL_STATE;
 

@@ -26,7 +26,10 @@ app.get('/', (request, response) => {
   const initialState = {
     isOpen: false,
     user: {
-      currentName: '',
+      nameCurrent: '',
+      languagesCurrent: '',
+      studyFieldCurrent: '',
+      studyLevelCurrent: '',
     },
     users: {},
     currentMessage: '',

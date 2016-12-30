@@ -19,13 +19,13 @@ export default function (initialState) {
         return Object.assign({}, currentUser, {
           userId: action.userId,
         });
-      case actions.UPDATE_NAME:
+      case actions.UPDATE_PERSONAL_INFO:
         return Object.assign({}, currentUser, {
-          currentName: action.name,
+          [`${action.info}Current`]: action.value,
         });
-      case actions.SUBMIT_NAME:
+      case actions.SUBMIT_PERSONAL_INFO:
         return Object.assign({}, currentUser, {
-          name: action.name,
+          [action.info]: action.value,
         });
       default:
         return currentUser;

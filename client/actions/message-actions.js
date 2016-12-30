@@ -6,8 +6,8 @@ export const ADD_MESSAGE = 'addMessage';
 export const ADD_RESPONSE = 'addResponse';
 export const SET_USER_ID = 'setUserId';
 export const UPDATE_USER_LIST = 'updateUserList';
-export const UPDATE_NAME = 'updateName';
-export const SUBMIT_NAME = 'submitName';
+export const UPDATE_PERSONAL_INFO = 'updatePersonalInfo';
+export const SUBMIT_PERSONAL_INFO = 'submitPersonalInfo';
 export const SEND_CHAT_REQUEST = 'sendChatRequest';
 export const CREATE_NEW_CHAT = 'createNewChat';
 export const CLOSE_CHAT = 'closeChat';
@@ -39,12 +39,12 @@ export function updateUserList(users) {
   return { type: UPDATE_USER_LIST, users };
 }
 
-export function updateName(name) {
-  return { type: UPDATE_NAME, name };
+export function updatePersonalInfo(info, value) {
+  return { type: UPDATE_PERSONAL_INFO, info, value };
 }
 
-export function submitName(name) {
-  return { type: SUBMIT_NAME, name };
+export function submitPersonalInfo(info, value) {
+  return { type: SUBMIT_PERSONAL_INFO, info, value };
 }
 
 export function sendChatRequest(userId) {

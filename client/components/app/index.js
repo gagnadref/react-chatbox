@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -8,41 +8,49 @@ import UserList from '../user-list';
 import ChatList from '../chat-list';
 import Login from '../login';
 
-const App = (props) => (
-  <div>
-    <div className="user-list-container">
-      <div className="user-list-title" onClick={() => props.toggleChatbox()}>
-        Talk to other students
+class App extends Component {
+  isFullyAuthenticated() {
+    return this.props.user.name && this.props.user.languages && this.props.user.studyField && this.props.user.studyLevel;
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="user-list-container">
+          <div className="user-list-title" onClick={() => this.props.toggleChatbox()}>
+            Talk to other students
+          </div>
+          {this.isFullyAuthenticated() && this.props.isOpen &&
+            <UserList
+              chats={this.props.chats}
+              userId={this.props.user.userId}
+              users={this.props.users}
+              sendChatRequest={this.props.sendChatRequest}
+              openChat={this.props.openChat}
+            />
+          }
+          {!this.isFullyAuthenticated() && this.props.isOpen &&
+            <Login
+              user={this.props.user}
+              onChange={this.props.updatePersonalInfo}
+              onSubmit={this.props.submitPersonalInfo}
+            />
+          }
+        </div>
+        {this.props.isOpen &&
+          <ChatList
+            userId={this.props.user.userId}
+            chats={this.props.chats}
+            updateMessage={this.props.updateMessage}
+            addMessage={this.props.addMessage}
+            translate={this.props.translate}
+            closeChat={this.props.closeChat}
+          />
+        }
       </div>
-      {props.user.name && props.isOpen &&
-        <UserList
-          chats={props.chats}
-          userId={props.user.userId}
-          users={props.users}
-          sendChatRequest={props.sendChatRequest}
-          openChat={props.openChat}
-        />
-      }
-      {!props.user.name && props.isOpen &&
-        <Login
-          value={props.user.currentName}
-          onChange={props.updateName}
-          onSubmit={props.submitName}
-        />
-      }
-    </div>
-    {props.isOpen &&
-      <ChatList
-        userId={props.user.userId}
-        chats={props.chats}
-        updateMessage={props.updateMessage}
-        addMessage={props.addMessage}
-        translate={props.translate}
-        closeChat={props.closeChat}
-      />
-    }
-  </div>
-);
+    );
+  }
+}
 
 App.propTypes = {
   isOpen: PropTypes.bool,
@@ -50,8 +58,8 @@ App.propTypes = {
   user: PropTypes.object,
   chats: PropTypes.object,
   sendChatRequest: PropTypes.func,
-  updateName: PropTypes.func,
-  submitName: PropTypes.func,
+  updatePersonalInfo: PropTypes.func,
+  submitPersonalInfo: PropTypes.func,
   updateMessage: PropTypes.func,
   addMessage: PropTypes.func,
   translate: PropTypes.func,
