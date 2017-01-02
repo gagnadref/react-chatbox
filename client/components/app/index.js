@@ -10,7 +10,7 @@ import Login from '../login';
 
 class App extends Component {
   isFullyAuthenticated() {
-    return this.props.user.name && this.props.user.languages && this.props.user.studyField && this.props.user.studyLevel;
+    return this.props.user.name && this.props.user.languages && this.props.user.studyField;
   }
 
   render() {
