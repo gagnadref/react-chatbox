@@ -1,7 +1,26 @@
 import React, { Component, PropTypes } from 'react';
+import $ from 'jquery';
+
 import {} from './style.less';
 
 class UserList extends Component {
+  componentDidMount() {
+    $(this.refs.userList).bind('mousewheel DOMMouseScroll', function(e) {
+      let scrollTo = null;
+
+      if (e.type === 'mousewheel') {
+        scrollTo = (e.originalEvent.wheelDelta * -1);
+      } else if (e.type === 'DOMMouseScroll') {
+        scrollTo = 40 * e.originalEvent.detail;
+      }
+
+      if (scrollTo) {
+        e.preventDefault();
+        $(this).scrollTop(scrollTo + $(this).scrollTop());
+      }
+    });
+  }
+
   getChatByUserId(userId) {
     return Object.keys(this.props.chats).find((chatId) => userId in this.props.chats[chatId].users);
   }
@@ -18,7 +37,7 @@ class UserList extends Component {
 
   render() {
     return (
-      <ul className="user-list">
+      <ul className="user-list" ref="userList">
         {Object.keys(this.props.users).map((userId, index) => {
           const user = this.props.users[userId];
 
