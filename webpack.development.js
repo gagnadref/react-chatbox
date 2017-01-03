@@ -59,8 +59,3 @@ devServer.listen(PORT, HOST, (err) => {
   if (err) throw err;
   console.log(`Webpack dev server listening at ${HOST_URI}`);
 });
-
-webpack(config.server).watch({}, (err, stats) => {
-  if (err) return console.error(err.message);
-  console.log(stats.toString(statOptions));
-});

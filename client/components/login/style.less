@@ -2,7 +2,14 @@
 
 .login-box {
   padding: 10px;
-  height: 190px;
+
+  .login-name, .login-study-field {
+    height: 140px
+  }
+
+  .login-language {
+    height: 220px
+  }
 
   label {
     display: block;
@@ -33,5 +40,30 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+  }
+
+  .Select-input {
+    input {
+      padding-left: 6px;
+      overflow: inherit;
+    }
+  }
+
+  .Select-clear {
+    display: none;
+  }
+
+  .login-submit {
+    bottom: 10px;
+    position: absolute;
+    width: 60%;
+    margin: 10px;
+    background-color: #35D599;
+    color: white;
+    padding: 5px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
   }
 }

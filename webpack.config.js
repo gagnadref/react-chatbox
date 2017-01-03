@@ -2,7 +2,6 @@ import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export const CLIENT_DIR = path.resolve(__dirname, 'client');
-export const SERVER_DIR = path.resolve(__dirname, 'server/generated');
 export const DIST_DIR = path.resolve(__dirname, 'dist');
 
 export const babelLoader = {
@@ -42,28 +41,4 @@ export const client = {
   ],
 };
 
-export const server = {
-  name: 'server',
-  target: 'node',
-  context: CLIENT_DIR,
-  entry: {
-    app: 'components/app/index.js',
-  },
-  output: {
-    path: SERVER_DIR,
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
-  },
-  externals: /^[a-z\-0-9]+$/,
-  module: {
-    loaders: [babelLoader, cssLoader],
-  },
-  resolve: {
-    alias: aliases,
-  },
-  plugins: [
-    new ExtractTextPlugin('[name].css'),
-  ],
-};
-
-export default [client, server];
+export default client;

@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import Select from 'react-select';
 
 import {} from './style.less';
+import {} from './select.less';
 
 class Login extends Component {
-  handleChange(info, ev) {
-    this.props.onChange(info, ev.target.value);
+  handleChange(info, value) {
+    this.props.onChange(info, value);
   }
 
   submit(info, ev) {
@@ -19,14 +21,25 @@ class Login extends Component {
     }
   }
 
+  submitLanguages() {
+    this.props.onSubmit('languages', this.props.user.languagesCurrent);
+  }
+
   render() {
+    const languages = [
+      { value: 'french', label: 'French' },
+      { value: 'english', label: 'English' },
+      { value: 'arabic', label: 'Arabic' },
+      { value: 'other', label: 'Other' },
+    ];
+
     return (
       <div className="login-box">
-        <label>
-          Please answer the following questions to start chatting with other students.
-        </label>
         {!this.props.user.name &&
           <div className="login-name">
+            <label>
+              Please answer the following questions to start chatting with other students.
+            </label>
             <label htmlFor="login-name">
               {'What\'s your name?'}
             </label>
@@ -36,7 +49,7 @@ class Login extends Component {
               name="login-name"
               placeholder="* Name"
               value={this.props.user.nameCurrent}
-              onChange={(ev) => this.handleChange('name', ev)}
+              onChange={(ev) => this.handleChange('name', ev.target.value)}
               onKeyPress={(ev) => this.submit('name', ev)}
             />
           </div>
@@ -47,14 +60,16 @@ class Login extends Component {
               What languages do you speak?
             </label>
             <div className="prompt" />
-            <input
+            <Select
               id="login-language"
               name="login-language"
-              placeholder="* My languages"
               value={this.props.user.languagesCurrent}
-              onChange={(ev) => this.handleChange('languages', ev)}
-              onKeyPress={(ev) => this.submit('languages', ev)}
+              options={languages}
+              onChange={(value) => this.handleChange('languages', value)}
+              multi
+              clearableValue={false}
             />
+            <button className="login-submit" onClick={() => this.submitLanguages()}>Next</button>
           </div>
         }
         {this.props.user.name && this.props.user.languages &&
@@ -69,7 +84,7 @@ class Login extends Component {
               name="login-study-field"
               placeholder="* Study field"
               value={this.props.user.studyFieldCurrent}
-              onChange={(ev) => this.handleChange('studyField', ev)}
+              onChange={(ev) => this.handleChange('studyField', ev.target.value)}
               onKeyPress={(ev) => this.submit('studyField', ev)}
             />
           </div>

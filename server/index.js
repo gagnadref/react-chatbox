@@ -1,11 +1,6 @@
 import path from 'path';
 import express from 'express';
 import handlebars from 'express-handlebars';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import App from './generated/app';
 
 const app = express();
 
@@ -27,7 +22,7 @@ app.get('/', (request, response) => {
     isOpen: false,
     user: {
       nameCurrent: '',
-      languagesCurrent: '',
+      languagesCurrent: [],
       studyFieldCurrent: '',
       studyLevelCurrent: '',
     },
@@ -36,15 +31,8 @@ app.get('/', (request, response) => {
     messages: [],
     chats: {},
   };
-  const store = createStore((state = initialState) => state);
-  const appContent = ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
 
   response.render('app', {
-    app: appContent,
     initialState: JSON.stringify(initialState),
   });
 });
